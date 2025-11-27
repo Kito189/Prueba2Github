@@ -21,7 +21,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install flask pymysql flask-mysqldb
+        pip install flask pymysql flask-mysqldb flask-cors
 
     - name: Test basic imports
       run: |
