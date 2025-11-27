@@ -1,0 +1,37 @@
+name: Python CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main", "dev" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        pip install flask pymysql flask-mysqldb
+
+    - name: Test basic imports
+      run: |
+        python -c "import app; print('Imports OK')"
+
+    - name: Build placeholder
+      run: echo "Compilación simulada (build placeholder)"
+
+    - name: Deploy placeholder
+      run: echo "Despliegue simulado (deploy placeholder)"
+
+    - name: Notify
+      run: echo "Pipeline ejecutado correctamente ✔️"
