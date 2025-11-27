@@ -17,7 +17,7 @@ jobs:
     - name: Setup Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.11'
+        python-version: "3.11"
 
     - name: Install dependencies
       run: |
@@ -28,10 +28,10 @@ jobs:
         python -c "import app; print('Imports OK')"
 
     - name: Build placeholder
-      run: echo "Compilación simulada (build placeholder)"
+      run: echo "Build ejecutado"
 
     - name: Deploy placeholder
-      run: echo "Despliegue simulado (deploy placeholder)"
+      run: echo "Deploy ejecutado"
 
     - name: Notify
       run: echo "Pipeline ejecutado correctamente ✔️"

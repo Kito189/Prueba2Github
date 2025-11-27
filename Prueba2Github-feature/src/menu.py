@@ -12,8 +12,6 @@ def mostrar_menu():
         print("3. Emitir factura")
         print("4. Despachar producto")
         print("5. Salir")
-        print("Seleccione una opción: ")
-        
 
         opcion = input("Seleccione una opción: ")
 
@@ -30,3 +28,7 @@ def mostrar_menu():
             break
         else:
             print("Opción inválida. Intente nuevamente.")
+
+
+if __name__ == "__main__":
+    mostrar_menu()
