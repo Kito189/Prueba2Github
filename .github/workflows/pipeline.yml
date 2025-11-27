@@ -25,7 +25,7 @@ jobs:
 
     - name: Test basic imports
       run: |
-        python -c "import app; print('Imports OK')"
+        python -c "from src import app; print('Imports OK')"
 
     - name: Build placeholder
       run: echo "Build ejecutado"
