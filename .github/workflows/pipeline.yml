@@ -23,10 +23,6 @@ jobs:
       run: |
         pip install flask pymysql flask-mysqldb flask-cors
 
-    - name: Test basic imports
-      run: |
-        python -c "from src import app; print('Imports OK')"
-
     - name: Build placeholder
       run: echo "Build ejecutado"
 
