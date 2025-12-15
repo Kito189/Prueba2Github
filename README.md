@@ -1,223 +1,236 @@
-🧾 Sistema de Gestión de Órdenes de Compra, Facturación y Envíos
+📦 Sistema de Gestión de Órdenes de Compra, Facturación y Envíos
 
-Proyecto desarrollado para cumplir los requerimientos del Proyecto Semestral Parcial 3, correspondiente a la asignatura de Ingeniería de Software / Programación.
-Incluye un sistema completo que permite gestionar órdenes de compra, emitir facturas y registrar el despacho de productos, utilizando Python, MySQL y GitHub Actions.
+Proyecto desarrollado como Examen Final / Proyecto Semestral, cuyo objetivo es implementar un sistema fullstack que permita gestionar el flujo completo de ventas, desde la creación de órdenes hasta el despacho de productos, integrando control de versiones y automatización CI/CD.
+
+📌 Información General
+
+Alumnos: Marco Parra Luis Inostroza 
+
+Institución: Duoc UC
+
+Asignatura: Programación / Ingeniería de Software
+
+Año: 2025
+
+Repositorio: GitHub (público)
 
 🎯 Objetivo del Proyecto
 
-Desarrollar un sistema funcional que permita gestionar el ciclo completo de una compra, desde su ingreso como orden hasta la generación de una factura y su posterior despacho.
-Además, integrar un flujo profesional de desarrollo utilizando GitFlow y automatización continua mediante un pipeline CI/CD.
+Desarrollar una aplicación web que permita:
 
-🧩 Requerimientos Funcionales Implementados
-✔ RF1 – Gestión de Órdenes de Compra
+Registrar usuarios y autenticar acceso
 
-Crear nuevas órdenes
+Gestionar órdenes de compra
 
-Listar órdenes
+Emitir facturas automáticamente
 
-Cambiar estado
+Registrar envíos asociados a facturas
 
-✔ RF2 – Inicio de Sesión
+Integrar un pipeline CI/CD usando GitHub Actions
 
-Validación de credenciales desde la tabla usuarios
+🧩 Arquitectura del Sistema
 
-✔ RF3 – Menú Principal
+El proyecto utiliza una arquitectura cliente-servidor, separando claramente frontend y backend:
 
-Navegación completa del sistema vía consola
+Backend
 
-✔ RF4 – Facturación
+Lenguaje: Python
 
-Emisión de factura
+Framework: Flask
 
-Cálculo automático de IVA
+Base de datos: MySQL
 
-Cambio de estado de la orden
+Tipo: API REST
 
-Registro en la tabla facturas
+Frontend
 
-✔ RF5 – Envíos
+Framework: React
 
-Registrar envío asociado a factura
+Consumo de API: Fetch (HTTP)
 
-Guardar comentario de despacho
+DevOps
 
-Registrar fecha
+Repositorio: GitHub
 
-Insertar en la tabla envios
-
-✔ RF6 – Pipeline CI/CD
-
-GitHub Actions configurado para ejecutar:
-
-Instalación de dependencias
-
-Revisión de integridad
-
-Simulación de build
-
-Simulación de deploy
-
-Notificación de éxito
-
-🏗️ Arquitectura del Sistema
-
-Tecnologías utilizadas:
-
-Python 3.11
-
-MySQL (Laragon)
-
-Git & GitHub
-
-GitHub Actions (CI/CD)
-
-Patrón utilizado: Modular por funcionalidades
-
-orden_compra.py
-
-factura.py
-
-envio.py
-
-login.py
-
-database.py
-
-menu.py
+CI/CD: GitHub Actions
 
 📁 Estructura del Proyecto
 Prueba2Github/
 │
-├── src/
-│   ├── app.py
-│   ├── database.py
-│   ├── login.py
-│   ├── menu.py
-│   ├── factura.py
-│   ├── orden_compra.py
-│   ├── envio.py
-│   └── __init__.py
+├── backend/
+│   └── src/
+│       ├── app.py
+│       ├── database.py
+│       ├── login.py
+│       ├── orden_compra.py
+│       ├── factura.py
+│       └── envio.py
 │
-├── .github/
-│   └── workflows/
-│       └── pipeline.yml
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── Login.js
+│   │   │   ├── Menu.js
+│   │   │   ├── Ordenes.js
+│   │   │   ├── Facturas.js
+│   │   │   └── Envios.js
+│   │   └── App.js
+│   └── package.json
 │
-├── evidencias/
-│   ├── rf4_factura.png
-│   ├── rf4_factura_bd.png
-│   ├── rf5_envio.png
-│   ├── rf5_envio_bd.png
-│   ├── pipeline_success.png
-│   ├── pipeline_logs.png
-│   ├── ramas.png
-│   └── kanban.png
+├── .github/workflows/
+│   └── pipeline.yml
 │
-├── README.md
-└── requirements.txt
+└── README.md
 
-🗄️ Base de Datos utilizada (MySQL)
+🔐 Requerimientos Funcionales (Rúbrica)
+RF1 – Registro de Órdenes de Compra
 
-Tablas:
+Permite crear y listar órdenes de compra
 
-🧑‍💼 usuarios
-id, usuario, password
+Se almacenan en base de datos MySQL
 
-📦 ordenes_compra
-id, producto, precio, cantidad, estado
+Estado inicial: pendiente
 
-🧾 facturas
-id, orden_id, iva, total, fecha, estado
+RF2 – Login de Usuarios
 
-📮 envios
-id, factura_id, comentario, fecha
+Autenticación mediante usuario y contraseña
 
-🔀 Flujo de Trabajo Git (GitFlow)
+Validación directa contra la base de datos
 
-Se utilizaron las siguientes ramas:
+Acceso restringido al sistema
 
-main → versión estable
+RF3 – Menú Principal
 
-dev → integración de funcionalidades
+Navegación entre módulos:
 
-qa → pruebas finales
+Órdenes
 
-feature/* → desarrollo de cada requerimiento
+Facturas
 
-Flujo de merges:
+Envíos
 
-feature → dev → qa → main
+RF4 – Emisión de Facturas
 
-🔧 Pipeline CI/CD (GitHub Actions)
+Se emite factura asociada a una orden
 
-El archivo se encuentra en:
+Cálculo automático de IVA (19%)
+
+Actualiza estado de la orden a facturada
+
+RF5 – Envío de Productos
+
+Registro de envíos asociados a facturas
+
+Validación de integridad referencial
+
+Visualización de envíos registrados
+
+RF6 – Integración CI/CD
+
+Pipeline configurado con GitHub Actions
+
+Se ejecuta automáticamente al hacer push
+
+Valida la estructura del proyecto
+
+🧪 Flujo del Sistema
+
+El usuario inicia sesión
+
+Registra una orden de compra
+
+La orden es facturada
+
+Se genera el envío asociado
+
+Los datos se almacenan en la base de datos
+
+Los cambios se validan con CI/CD
+
+▶️ Ejecución del Proyecto
+Backend
+cd backend/src
+python app.py
+
+
+Servidor disponible en:
+
+http://localhost:5000
+
+Frontend
+cd frontend
+npm install
+npm start
+
+
+Aplicación disponible en:
+
+http://localhost:3000
+
+🗄️ Base de Datos
+
+Base de datos utilizada: MySQL
+
+Tablas principales:
+
+usuarios
+
+ordenes_compra
+
+facturas
+
+envios
+
+Relaciones:
+
+Una orden puede tener una factura
+
+Una factura puede tener un envío
+
+🚀 Pipeline CI/CD
+
+El proyecto incluye un pipeline configurado en:
 
 .github/workflows/pipeline.yml
 
 
-Incluye:
+Funciones del pipeline:
 
-Instalación de dependencias (Flask, PyMySQL)
+Se ejecuta automáticamente con cada push
 
-Simulación de build
+Garantiza consistencia del repositorio
 
-Simulación de deploy
+Cumple con el requerimiento RF6
 
-Notificación final
+📸 Evidencias
 
-Trigger en:
+Durante el desarrollo se obtuvieron evidencias de:
 
-Push a main o dev
+Login funcional
 
-Pull request a main
+Órdenes creadas y listadas
 
-🖥️ Instrucciones de Instalación
-1️⃣ Clonar el repositorio
-git clone https://github.com/Kito189/Prueba2Github.git
-cd Prueba2Github
+Facturas emitidas correctamente
 
-2️⃣ Crear entorno virtual (opcional)
-python -m venv .venv
+Envíos registrados
 
-3️⃣ Activar entorno
+Pipeline ejecutado exitosamente
 
-Windows:
+✅ Conclusión
 
-.venv\Scripts\activate
+Este proyecto cumple con todos los requisitos establecidos en la rúbrica del examen final, demostrando:
 
-4️⃣ Instalar dependencias
-pip install flask pymysql flask-mysqldb flask-cors
+Desarrollo fullstack
 
-5️⃣ Configurar base de datos
+Integración frontend y backend
 
-Importar el archivo SQL o crear las tablas manualmente.
+Persistencia en base de datos
 
-6️⃣ Ejecutar el sistema
-python src/menu.py
+Automatización con CI/CD
 
-🧪 Evidencias del Proyecto
+Buen uso de Git y GitHub
 
-Las evidencias se encuentran en la carpeta /evidencias/:
-
-Factura generada
-
-BD facturas
-
-Envío registrado
-
-BD envíos
-
-Pipeline SUCCESS
-
-Logs del pipeline
-
-Flujo de ramas
-
-Merges
-
-Kanban
-
-🙌 Autor
-
-Luis Inostroza Marco Parra 
-Estudiantes de Ingeniería en Informática – DUOC UC
-Proyecto desarrollado con fines académicos.
+🧠 Autor
+Luis Inostroza
+Marco Parra
+Duoc UC – 2025
